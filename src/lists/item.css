@@ -1,0 +1,32 @@
+.article {
+  display: flex;
+  padding: .5rem 1rem .5rem 0;
+}
+.article:first-of-type {
+  padding-top: 4.5rem;
+}
+
+.index {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: #333;
+  text-align: right;
+  min-width: 3rem;
+}
+
+.outboundLink {
+  display: block;
+  font-weight: 400;
+  margin-bottom: .5rem;
+  line-height: 1.2;
+  text-decoration: none;
+  color: #000; 
+}
+
+.metadata > p {
+  font-size: .8rem;
+  color: #666;
+}
+.link {
+  color: #666;
+}

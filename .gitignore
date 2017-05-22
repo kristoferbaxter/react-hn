@@ -1,0 +1,22 @@
+# ignore all dist files
+dist/chrome/*
+dist/safari/*
+dist/edge/*
+dist/firefox/*
+dist/server/*
+dist/fallback/*
+
+# ignore node_modules and yarn lock
+node_modules/
+yarn.lock
+
+# ignore vscode entries (best editor ever?!)
+.vscode/
+
+# oh .DS_Store you friendly awesome foe
+.DS_Store
+
+#Ignore filesystem items
+SERVER.md
+proxy/cert.pem
+proxy/key.pem
