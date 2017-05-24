@@ -21,7 +21,7 @@ class Comment extends Component {
     }
 
     const {by, time, text, kids} = data[root];
-    return (
+    return text ? (
       <article className={styles.comment}>
         <header className={styles.header}>
           <a href={`/user/${by}`} className={styles.userLink}>{by}</a>
@@ -30,7 +30,7 @@ class Comment extends Component {
         <Text text={text} isComment={true} />
         {kids && <div className={styles.kids}>{Object.values(kids).map((kid) => <Comment root={kid} data={data} kidsOnly={false} />)}</div>}
       </article>
-    );
+    ) : null;
   }
 }
 
