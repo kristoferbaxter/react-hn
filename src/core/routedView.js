@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from '../header/header.js';
+import LoadingView from './loadingView.js';
 
 import styles from './routedView.css';
 
@@ -56,12 +57,12 @@ export default class RoutedView extends Component {
   render() {
     const {child, pastDelay} = this.state;
 
-    const renderChild = this.props.child || child || null;
+    const usableChild = this.props.child || child || null;
     return (
       <div className={styles.viewHasHeader}>
         <Header />
         <div className={styles.mainView}>
-          {renderChild ? React.createElement(renderChild, this.props) : (pastDelay || this.props.delay === 0 ? this.props.children : null)}
+          {usableChild ? React.createElement(usableChild, this.props) : (pastDelay || this.props.delay === 0 ? (this.props.children || <LoadingView />) : null)}
         </div>
       </div>
     );

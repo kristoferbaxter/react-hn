@@ -55,7 +55,8 @@ function defaultRoute(req, res, next) {
       ${supportsManifest ? '<link rel="manifest" href="/dist/chrome/manifest.json" />' : ''}
       <link rel="icon" href="/static/icons/favicon.png">
       <script>window.seed=${JSON.stringify(data)}</script>
-      <script src='${resources.js}' async defer></script>
+      <script src='${resources.js}' defer></script>
+      ${resources.route && resources.route.js ? `<script src='${resources.route.js}' defer></script>` : ''}
     </head>
     <body>`);
 
