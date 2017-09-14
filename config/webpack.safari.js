@@ -36,6 +36,5 @@ module.exports = {
     }),
     CommonOptions.BabiliMinification,
     CommonOptions.ExtractCSSPlugin,
-    CommonOptions.ZopfliCompression
   ]
 };

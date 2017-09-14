@@ -40,7 +40,6 @@ module.exports = {
     ], {copyUnmodified: true}),
     CommonOptions.BabiliMinification,
     CommonOptions.ExtractCSSPlugin,
-    CommonOptions.ZopfliCompression,
-    CommonOptions.BrotliCompression
+    CommonOptions.BrotliCompression,
   ]
 };

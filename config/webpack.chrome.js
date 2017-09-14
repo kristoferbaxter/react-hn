@@ -57,7 +57,6 @@ module.exports = {
         publicPath: '/sw.js'
       }
     }),
-    CommonOptions.ZopfliCompression,
-    CommonOptions.BrotliCompression
+    CommonOptions.BrotliCompression,
   ]
 };

@@ -36,6 +36,5 @@ module.exports = {
     }),
     new BabiliPlugin({unsafe: false}),
     CommonOptions.ExtractCSSPlugin,
-    CommonOptions.ZopfliCompression
   ]
 };
