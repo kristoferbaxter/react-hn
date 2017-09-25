@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import withData from '../../core/withData.hoc.js';
+import {Link} from 'react-router-dom';
+import WithData from '../../core/withData.js';
 import GetItems from '../../core/api/items.js';
 import LoadingView from '../../core/loadingView.js';
 import Comments from './comments.js';
@@ -19,7 +20,7 @@ function ItemView({match, data}) {
       <article className={styles.article}>
         <h1><a href={url} className={styles.outboundLink}>{title}</a></h1>
         {url && <small className={styles.hostname}>({new URL(url).hostname})</small>}
-        <p className={styles.byline}>{score} points by <a href={`/user/${by}`} className={styles.link}>{by}</a></p>
+        <p className={styles.byline}>{score} points by <Link to={`/user/${by}`} className={styles.link}>{by}</Link></p>
         <Text text={text} />
       </article>
       <div className={styles.comments}>
@@ -30,8 +31,14 @@ function ItemView({match, data}) {
   );  
 }
 
-export default function(props) {
-  const ItemViewWithData = withData(ItemView, {fetchDataFunction: GetItems, properties: {keys: [props.match.params.id]}});
-
-  return <ItemViewWithData {...props} />;
+export default class extends Component {
+  renderCallback = data => <ItemView data={data} {...this.props} />;
+  
+  render() {
+    return <WithData 
+      source={GetItems} 
+      values={{keys: [this.props.match.params.id]}} 
+      render={this.renderCallback}
+    />;
+  }
 }

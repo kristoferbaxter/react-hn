@@ -16,11 +16,11 @@ function classifyBrowser(opts) {
     req.log.info(`user-agent: ${req.headers['user-agent']}`);
     req.log.info(`user-agent parsed: ${family}, ${major}`);
     
-    if (lowerCaseFamily === 'chrome' || lowerCaseFamily === 'chrome mobile' && major >= 52) {
+    if (lowerCaseFamily === 'chrome' || lowerCaseFamily === 'chrome mobile' && major >= 59) {
       req.userAgentClassifiction='chrome';
     } else if (lowerCaseFamily === 'safari' || lowerCaseFamily === 'safari mobile' && major >= 10) {
       req.userAgentClassifiction='safari';
-    } else if (lowerCaseFamily === 'firefox' && major >= 51) {
+    } else if (lowerCaseFamily === 'firefox' && major >= 54) {
       req.userAgentClassifiction='firefox';
     } else if (lowerCaseFamily === 'edge' && major >= 15) {
       req.userAgentClassifiction='edge';

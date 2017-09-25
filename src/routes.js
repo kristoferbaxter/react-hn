@@ -14,13 +14,9 @@ export default function() {
   return (
     <Router>
       <div>
-        <Route path='/new' render={_ => <RoutedView listType={LIST_TYPES.new} child={ListView} delay={0}/>} />
         <Route path='/new/:page' render={({match}) => <RoutedView listType={LIST_TYPES.new} match={match} child={ListView} delay={0}/>} />
-        <Route path='/show' render={_ => <RoutedView listType={LIST_TYPES.show} child={ListView} delay={0}/>} />
         <Route path='/show/:page' render={({match}) => <RoutedView listType={LIST_TYPES.show} match={match} child={ListView} delay={0}/>} />
-        <Route path='/ask' render={_ => <RoutedView listType={LIST_TYPES.ask} child={ListView} delay={0}/>} />
         <Route path='/ask/:page' render={({match}) => <RoutedView listType={LIST_TYPES.ask} child={ListView} delay={0}/>} />
-        <Route path='/jobs' render={_ => <RoutedView listType={LIST_TYPES.jobs} child={ListView} delay={0}/>} />
         <Route path='/jobs/:page' render={({match}) => <RoutedView listType={LIST_TYPES.jobs} match={match} child={ListView} delay={0}/>} />
         <Route path='/about' render={_ => <RoutedView load={ROUTE_BUNDLE_ABOUT}><LoadingView /></RoutedView>} />
         <Route path="/item/:id" render={({match}) => <RoutedView load={ROUTE_BUNDLE_ITEM} match={match}><LoadingView /></RoutedView>} />

@@ -1,39 +1,25 @@
 import React, {Component} from 'react';
 import {GetListApi} from '../../core/api/list.js';
-import withData from '../../core/withData.hoc.js';
+import WithData from '../../core/withData.js';
 import ListView from '../list.js';
 
 export default class ListHome extends Component {
-  constructor(props) {
-    super(props);
+  state = {
+    uuid: null
+  };
 
-    this.state = {
-      uuid: null
-    };
-    
-    this.handleUUIDChange = this.handleUUIDChange.bind(this);
-  }
+  handleUUIDChange = uuid => this.state.uuid = uuid;
+  componentWillReceiveProps = _ => this.state.uuid = null;
+  renderCallback = data => <ListView data={data} {...this.props} />;
 
-  handleUUIDChange(uuid) {
-    this.state.uuid = uuid;
-  }
-  componentWillReceiveProps() {
-    this.state.uuid = null;
-  }
-  
   render() {
     const {match, listType} = this.props;
-    const page = match && match.params.page || 1;
     const {uuid} = this.state;
+    const values = Object.assign({
+      page: parseInt(match && match.params.page || 1, 10),
+      listType
+    }, uuid ? {uuid} : {});
 
-    const ViewWithData = withData(ListView, {
-      fetchDataFunction: GetListApi,
-      properties: Object.assign({
-        page: page,
-        listType: listType
-      }, uuid ? {uuid: uuid} : {})
-    });
-
-    return <ViewWithData handleUUIDChange={this.handleUUIDChange} />
+    return <WithData source={GetListApi} values={values} render={this.renderCallback} handleUUIDChange={this.handleUUIDChange} />;
   }
 }
