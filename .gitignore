@@ -20,3 +20,5 @@ yarn.lock
 SERVER.md
 proxy/cert.pem
 proxy/key.pem
+private/cert.pem
+private/key.pem
