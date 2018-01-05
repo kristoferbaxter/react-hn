@@ -4,7 +4,7 @@ const getDevelopmentCertificate = require("devcert-with-localhost").default;
 const fs = require("fs");
 const path = require("path");
 
-const PRIVATE_FOLDER_PATH = path.join(__dirname, "..", "private");
+const PRIVATE_FOLDER_PATH = path.join(__dirname, "..", "proxy");
 const CERT_KEY_PATH = path.join(PRIVATE_FOLDER_PATH, "key.pem");
 const CERT_PATH = path.join(PRIVATE_FOLDER_PATH, "cert.pem");
 

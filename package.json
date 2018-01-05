@@ -20,7 +20,7 @@
     "bundle:server": "BABEL_ENV=server node_modules/.bin/webpack --config config/webpack.server.js --json > dist/server/webpack.json",
     "bundle:prod": "NODE_ENV=production yarn run bundle:all;",
     "test:h2o": "cd dist/server && h2o -t -c h2o.config.yaml",
-    "prepcerts": "node ./config/gen-certs.js && rm -rf proxy/*.pem && cp private/*.pem proxy/"
+    "prepcerts": " rm -rf proxy/*.pem && node ./config/gen-certs.js"
   },
   "dependencies": {
     "bunyan": "^1.8.12",
