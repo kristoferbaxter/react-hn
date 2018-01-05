@@ -6,7 +6,7 @@
   "author": "Kristofer Baxter",
   "license": "MIT",
   "scripts": {
-    "start": "node_modules/.bin/nodemon -e js,css --config nodemon.config.json --exec 'yarn' start:node:dev-after-bundle",
+    "start": "yarn prepcerts && node_modules/.bin/nodemon -e js,css --config nodemon.config.json --exec 'yarn' start:node:dev-after-bundle",
     "start:node": "node dist/server/restify.server.js | ./node_modules/.bin/bunyan",
     "start:node:dev-after-bundle": "yarn run bundle:dev; yarn run start:node",
     "start:h2o": "cd dist/server && h2o -c h2o.config.yaml",
@@ -19,10 +19,12 @@
     "bundle:fallback": "BABEL_ENV=fallback node_modules/.bin/webpack --config config/webpack.fallback.js --json > dist/fallback/webpack.json",
     "bundle:server": "BABEL_ENV=server node_modules/.bin/webpack --config config/webpack.server.js --json > dist/server/webpack.json",
     "bundle:prod": "NODE_ENV=production yarn run bundle:all;",
-    "test:h2o": "cd dist/server && h2o -t -c h2o.config.yaml"
+    "test:h2o": "cd dist/server && h2o -t -c h2o.config.yaml",
+    "prepcerts": " rm -rf proxy/*.pem && node ./config/gen-certs.js"
   },
   "dependencies": {
     "bunyan": "^1.8.12",
+    "devcert-with-localhost": "^0.3.3",
     "forever": "^0.15.3",
     "history": "^4.7.2",
     "iltorb": "^1.2.1",
@@ -52,9 +54,11 @@
     "brotli-webpack-plugin": "^0.4.1",
     "browserslist": "^2.4.0",
     "bundle-loader": "^0.5.5",
+    "chalk": "^2.3.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "cssnano": "^3.10.0",
+    "eslint": "^4.14.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "nodemon": "^1.11.0",
     "object.values": "^1.0.4",
