@@ -15,7 +15,7 @@ module.exports = function(context) {
 
   return {
     presets: [
-      ["env", {
+      ['@babel/env', {
         targets: targets[env],
         modules: isServer ? "commonjs" : false,
         loose: isServer ? false : true,
@@ -23,11 +23,11 @@ module.exports = function(context) {
       }]
     ],
     plugins: [
-      ["transform-class-properties"],
-      ["transform-es2015-block-scoping", {
+      ["@babel/proposal-class-properties"],
+      ["@babel/transform-block-scoping", {
         "throwIfClosureRequired": true
       }],
-      ["transform-react-jsx", {
+      ["@babel/transform-react-jsx", {
         pragma: "React.createElement",
         useBuiltIns: true
       }]
